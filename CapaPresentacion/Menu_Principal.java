@@ -61,6 +61,8 @@ public class Menu_Principal extends javax.swing.JFrame {
         menu_item_TipoUsuario = new javax.swing.JMenuItem();
         menu_item_Usuario = new javax.swing.JMenuItem();
         menu_item_Turno = new javax.swing.JMenuItem();
+        menu_item_Marca = new javax.swing.JMenuItem();
+        menu_item_categoria = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menu_deuda = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -142,7 +144,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         jToolBar1.add(btnCaja);
         jToolBar1.add(jSeparator1);
 
-        jButton1.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacionImagen/btn_Salir.png"))); // NOI18N
         jButton1.setText("Salir");
         jButton1.setFocusable(false);
@@ -181,6 +183,22 @@ public class Menu_Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(menu_item_Turno);
+
+        menu_item_Marca.setText("Laboratorio");
+        menu_item_Marca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_MarcaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_item_Marca);
+
+        menu_item_categoria.setText("Categoria");
+        menu_item_categoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_categoriaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_item_categoria);
 
         jMenuBar1.add(jMenu1);
 
@@ -259,6 +277,26 @@ public class Menu_Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void menu_item_MarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_MarcaActionPerformed
+        // TODO add your handling code here:
+        Marca_IU frame = new Marca_IU();
+        escritorio.add(frame);
+        Dimension a = escritorio.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_menu_item_MarcaActionPerformed
+
+    private void menu_item_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_categoriaActionPerformed
+        // TODO add your handling code here:
+        Categoria_IU frame = new Categoria_IU();
+        escritorio.add(frame);
+        Dimension a = escritorio.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_menu_item_categoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,9 +356,11 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JMenu menu_deuda;
+    private javax.swing.JMenuItem menu_item_Marca;
     private javax.swing.JMenuItem menu_item_TipoUsuario;
     private javax.swing.JMenuItem menu_item_Turno;
     private javax.swing.JMenuItem menu_item_Usuario;
+    private javax.swing.JMenuItem menu_item_categoria;
     public javax.swing.JMenu menu_salir;
     // End of variables declaration//GEN-END:variables
 }

@@ -105,6 +105,9 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNombreKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
         });
 
         tabla_reporte_TipoUsuario.setModel(new javax.swing.table.DefaultTableModel(
@@ -239,7 +242,8 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
                 .addGap(6, 6, 6)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -368,6 +372,15 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
 
         }
     }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
