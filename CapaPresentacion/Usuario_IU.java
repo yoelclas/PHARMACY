@@ -34,6 +34,8 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
         initComponents();
         cargarTipoUsuario();
         reportar_usuarios();
+        
+        
 
     }
 
@@ -42,7 +44,7 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
             setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
             DefaultTableModel tabla_temporal;
             UsuarioBD objeto_usuarioBD = new UsuarioBD();
-            tabla_temporal = objeto_usuarioBD.reportarUsuarios();
+            tabla_temporal = objeto_usuarioBD.reportarUsuario();
             tabla_reporte_usuarios.setModel(tabla_temporal);
 
             int cantLista = tabla_temporal.getRowCount();
@@ -480,11 +482,11 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
                         .addComponent(cmbTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnEliminar)
-                            .addComponent(btnModificar)
-                            .addComponent(btnRegistrar)
-                            .addComponent(btnReporte)
-                            .addComponent(btnCerrar)))
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -704,11 +706,11 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
             setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
             DefaultTableModel tabla_temporal;
 
-            String valor = txtBuscar_apellidos.getText().toString();
+            String apellidos = txtBuscar_apellidos.getText().toString();
 
             UsuarioBD oUsuarioBD = new UsuarioBD();
 
-            tabla_temporal = oUsuarioBD.buscarUsuario(valor);
+            tabla_temporal = oUsuarioBD.buscarUsuario(apellidos);
             tabla_reporte_usuarios.setModel(tabla_temporal);
 
             int cantLista = tabla_temporal.getRowCount();
@@ -725,27 +727,7 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
 
-        //        try {
-        //
-        //            Conexion mysql = new Conexion();
-        //            Connection cn = mysql.conectar();
-        //
-        //            JasperRepor reporte = null;
-        //            String ruta = "src/CapaPresentacion/Reportes/Reporte_Usuarios.jasper";
-        //
-        //            reporte = (JasperReport) JRLoader.loadObjectFromFile(ruta);
-        //            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, cn);
-        //            JasperViewer jvmostrar = new JasperViewer(jprint, false);
-        //
-        //            jvmostrar.setTitle("REPORTE DE USUARIOS");
-        //            jvmostrar.setVisible(true);
-        //            jvmostrar.setExtendedState(6);
-        //
-        //            jvmostrar.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        //
-        //        } catch (Exception e) {
-        //            e.printStackTrace();
-        //        }
+    
     }//GEN-LAST:event_btnReporteActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed

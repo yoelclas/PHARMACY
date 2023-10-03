@@ -120,11 +120,11 @@
                       <Component id="cmbTienda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnModificar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnRegistrar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnReporte" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCerrar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEliminar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnModificar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnRegistrar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnCerrar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnReporte" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">

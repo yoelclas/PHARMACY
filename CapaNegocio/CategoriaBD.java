@@ -27,17 +27,14 @@ public class CategoriaBD {
     private String sql;
 
     public List<Categoria> reportarCategoria() {
-
         List<Categoria> lista = new ArrayList<>();
         sql = "SELECT idcategoria,caNombre FROM categoria";
-
         try {
-
             PreparedStatement pst = cn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                Categoria oCategoria = new Categoria();
 
+                Categoria oCategoria = new Categoria();
                 oCategoria.setIdcategoria(rs.getInt(1));
                 oCategoria.setCaNombre(rs.getString(2));
 
@@ -47,11 +44,8 @@ public class CategoriaBD {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error al reportar CategoriaBD...", JOptionPane.ERROR_MESSAGE);
             return null;
-
         }
-
         return lista;
-
     }
 
     public boolean registrarCategotia(Categoria c) {
@@ -75,7 +69,7 @@ public class CategoriaBD {
 
     public boolean modificarCategoria(Categoria c) {
         boolean rpta = false;
-        sql = "UPDATE marca SET caNombre=? WHERE idcategoria=?";
+        sql = "UPDATE categoria SET caNombre=? WHERE idcategoria=?";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
 
@@ -107,30 +101,29 @@ public class CategoriaBD {
 
         return rpta;
     }
-    
-      public DefaultTableModel buscarCategoria(String nombre) {
-        DefaultTableModel tabla_temporal;
-        String[] cabezera = {"CODIGO", "NOMBRE"};
-        String[] registros = new String[2];
-        tabla_temporal = new DefaultTableModel(null, cabezera);
 
+    public List<Categoria> buscarCategoria(String valor) {
+        List<Categoria> lista = new ArrayList<>();
         sql = "SELECT  idcategoria,caNombre FROM categoria WHERE caNombre LIKE ?";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, "%" + nombre + "%");
+            pst.setString(1, "%" + valor + "%");
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                registros[0] = rs.getString("idcategoria");
-                registros[1] = rs.getString("caNombre");
+                Categoria oCategoria = new Categoria();
 
-                tabla_temporal.addRow(registros);
+                oCategoria.setIdcategoria(rs.getInt(1));
+                oCategoria.setCaNombre(rs.getString(2));
+
+                lista.add(oCategoria);
 
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error al buscar CategoriaBD", JOptionPane.ERROR_MESSAGE);
+            return null;
         }
-        return tabla_temporal;
+        return lista;
     }
 
 }

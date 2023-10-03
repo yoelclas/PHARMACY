@@ -86,6 +86,7 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("MANTENIMIENTO TIPO USUARIO");
 
         jLabel2.setText("NOMBRE");
 

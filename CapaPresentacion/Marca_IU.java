@@ -126,6 +126,14 @@ public class Marca_IU extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Laboratorio");
 
+        txtBuscarMarca.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscarMarcaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscarMarcaFocusLost(evt);
+            }
+        });
         txtBuscarMarca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBuscarMarcaKeyPressed(evt);
@@ -155,13 +163,10 @@ public class Marca_IU extends javax.swing.JInternalFrame {
 
         tabla_reporte_marca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "NOMBE"
             }
         ));
         tabla_reporte_marca.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -170,6 +175,11 @@ public class Marca_IU extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(tabla_reporte_marca);
+        if (tabla_reporte_marca.getColumnModel().getColumnCount() > 0) {
+            tabla_reporte_marca.getColumnModel().getColumn(0).setMinWidth(100);
+            tabla_reporte_marca.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tabla_reporte_marca.getColumnModel().getColumn(0).setMaxWidth(100);
+        }
 
         jLabel4.setText("Cantidad");
 
@@ -467,6 +477,18 @@ public class Marca_IU extends javax.swing.JInternalFrame {
 
         }
     }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtBuscarMarcaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMarcaFocusGained
+        // TODO add your handling code here:
+        
+        txtBuscarMarca.setBackground(Color.yellow);
+        
+    }//GEN-LAST:event_txtBuscarMarcaFocusGained
+
+    private void txtBuscarMarcaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMarcaFocusLost
+        // TODO add your handling code here:
+        txtBuscarMarca.setBackground(Color.white);
+    }//GEN-LAST:event_txtBuscarMarcaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

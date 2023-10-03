@@ -266,6 +266,11 @@ public class Turno_IU extends javax.swing.JInternalFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
+        btnBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnBuscarKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -392,7 +397,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
-        if (fila_seleccionada > -1 ) {
+        if (fila_seleccionada > -1) {
 
             int aviso = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de eliminar a la fila " + fila_seleccionada);
             if (aviso == 0) {
@@ -429,7 +434,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
 
             DefaultTableModel tabla_temporal;
             UsuarioBD oUsuarioBD = new UsuarioBD();
-            tabla_temporal = oUsuarioBD.buscarUsuario(txtDni.getText());
+            tabla_temporal = oUsuarioBD.buscarUsuarioXdni(txtDni.getText());
             int cant = tabla_temporal.getRowCount();
             if (cant > 0) {
 
@@ -463,7 +468,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
 
     private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
         // TODO add your handling code here:
-         char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
         if (!Character.isDigit(c) || txtDni.getText().length() >= 8) {
             evt.consume();
 
@@ -476,7 +481,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
             btnBuscar.requestFocus();
 
         }
-        
+
     }//GEN-LAST:event_txtDniKeyPressed
 
     private void txtHoraInicioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraInicioFocusGained
@@ -486,8 +491,8 @@ public class Turno_IU extends javax.swing.JInternalFrame {
 
     private void txtHoraInicioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraInicioKeyPressed
         // TODO add your handling code here:
-        
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtHoraFinal.requestFocus();
 
         }
@@ -500,18 +505,18 @@ public class Turno_IU extends javax.swing.JInternalFrame {
 
     private void txtDniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDniFocusLost
         // TODO add your handling code here:
-        
+
         txtDni.setBackground(Color.white);
     }//GEN-LAST:event_txtDniFocusLost
 
     private void txtHoraInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraInicioFocusLost
         // TODO add your handling code here:
-         txtHoraInicio.setBackground(Color.white);
+        txtHoraInicio.setBackground(Color.white);
     }//GEN-LAST:event_txtHoraInicioFocusLost
 
     private void txtHoraFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraFinalKeyTyped
         // TODO add your handling code here:
-          char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || c == ':')) {
             evt.consume();
 
@@ -520,21 +525,29 @@ public class Turno_IU extends javax.swing.JInternalFrame {
 
     private void txtHoraFinalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraFinalFocusGained
         // TODO add your handling code here:
-         txtHoraFinal.setBackground(Color.yellow);
+        txtHoraFinal.setBackground(Color.yellow);
     }//GEN-LAST:event_txtHoraFinalFocusGained
 
     private void txtHoraFinalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraFinalFocusLost
         // TODO add your handling code here:
-         txtHoraFinal.setBackground(Color.white);
+        txtHoraFinal.setBackground(Color.white);
     }//GEN-LAST:event_txtHoraFinalFocusLost
 
     private void txtHoraFinalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraFinalKeyPressed
         // TODO add your handling code here:
-           if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnRegistrar.requestFocus();
 
         }
     }//GEN-LAST:event_txtHoraFinalKeyPressed
+
+    private void btnBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBuscarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtHoraInicio.requestFocus();
+
+        }
+    }//GEN-LAST:event_btnBuscarKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

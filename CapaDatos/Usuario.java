@@ -17,19 +17,25 @@ public class Usuario {
     private String uDireccion;
     private String uclave;
     private String uCelular;
+    private int idtipousuario;
     private int uTipo;
     private String tienda;
 
     public Usuario() {
     }
 
-    public Usuario(String uDni, String uNombre, String uApellido, String uDireccion, String uclave, String uCelular, int uTipo, String tienda) {
+    
+    
+    
+    
+    public Usuario(String uDni, String uNombre, String uApellido, String uDireccion, String uclave, String uCelular, int idtipousuario, int uTipo, String tienda) {
         this.uDni = uDni;
         this.uNombre = uNombre;
         this.uApellido = uApellido;
         this.uDireccion = uDireccion;
         this.uclave = uclave;
         this.uCelular = uCelular;
+        this.idtipousuario = idtipousuario;
         this.uTipo = uTipo;
         this.tienda = tienda;
     }
@@ -82,6 +88,14 @@ public class Usuario {
         this.uCelular = uCelular;
     }
 
+    public int getIdtipousuario() {
+        return idtipousuario;
+    }
+
+    public void setIdtipousuario(int idtipousuario) {
+        this.idtipousuario = idtipousuario;
+    }
+
     public int getuTipo() {
         return uTipo;
     }
@@ -97,5 +111,7 @@ public class Usuario {
     public void setTienda(String tienda) {
         this.tienda = tienda;
     }
+
+   
 
 }

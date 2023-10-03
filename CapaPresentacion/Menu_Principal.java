@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
 
 /**
  *
@@ -55,20 +54,27 @@ public class Menu_Principal extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JToolBar.Separator();
         btnCaja = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        jButton1 = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menu_mentenimiento = new javax.swing.JMenu();
         menu_item_TipoUsuario = new javax.swing.JMenuItem();
         menu_item_Usuario = new javax.swing.JMenuItem();
         menu_item_Turno = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         menu_item_Marca = new javax.swing.JMenuItem();
         menu_item_categoria = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        menu_deuda = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        menu_salir = new javax.swing.JMenu();
+        menu_item_medida = new javax.swing.JMenuItem();
+        menu_item_producto = new javax.swing.JMenuItem();
+        menu_item_Composicion = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        menu_item_proveedor = new javax.swing.JMenuItem();
+        menu_compras = new javax.swing.JMenu();
+        menu_inventario = new javax.swing.JMenu();
+        menu_ventas = new javax.swing.JMenu();
+        menu_caja = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setEnabled(false);
         setExtendedState(6);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
@@ -88,6 +94,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         btnProducto.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
         btnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacionImagen/btn_productoss.png"))); // NOI18N
         btnProducto.setText("PRODUCTOS");
+        btnProducto.setEnabled(false);
         btnProducto.setFocusable(false);
         btnProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnProducto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -102,6 +109,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         btnCompras.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
         btnCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacionImagen/btn_compras.png"))); // NOI18N
         btnCompras.setText("COMPRAS");
+        btnCompras.setEnabled(false);
         btnCompras.setFocusable(false);
         btnCompras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCompras.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -111,6 +119,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         btnIngresos.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
         btnIngresos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacionImagen/btn_ingreso.png"))); // NOI18N
         btnIngresos.setText("INGRESOS");
+        btnIngresos.setEnabled(false);
         btnIngresos.setFocusable(false);
         btnIngresos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnIngresos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -120,6 +129,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         btnEgresos.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
         btnEgresos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacionImagen/btn_egreso.png"))); // NOI18N
         btnEgresos.setText("EGRESOS");
+        btnEgresos.setEnabled(false);
         btnEgresos.setFocusable(false);
         btnEgresos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEgresos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -129,6 +139,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         btnVentas.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacionImagen/btn_ventas.png"))); // NOI18N
         btnVentas.setText("VENTAS");
+        btnVentas.setEnabled(false);
         btnVentas.setFocusable(false);
         btnVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -138,27 +149,29 @@ public class Menu_Principal extends javax.swing.JFrame {
         btnCaja.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
         btnCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacionImagen/btn_caja.png"))); // NOI18N
         btnCaja.setText("CAJA");
+        btnCaja.setEnabled(false);
         btnCaja.setFocusable(false);
         btnCaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCaja.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnCaja);
         jToolBar1.add(jSeparator1);
 
-        jButton1.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacionImagen/btn_Salir.png"))); // NOI18N
-        jButton1.setText("Salir");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrar.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaPresentacionImagen/btn_Salir.png"))); // NOI18N
+        btnCerrar.setText("Salir");
+        btnCerrar.setFocusable(false);
+        btnCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCerrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCerrarActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton1);
+        jToolBar1.add(btnCerrar);
 
-        jMenu1.setText("Mantenimiento");
-        jMenu1.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        menu_mentenimiento.setText("Mantenimiento");
+        menu_mentenimiento.setEnabled(false);
+        menu_mentenimiento.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
 
         menu_item_TipoUsuario.setText("Tipo Usuario");
         menu_item_TipoUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +179,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 menu_item_TipoUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(menu_item_TipoUsuario);
+        menu_mentenimiento.add(menu_item_TipoUsuario);
 
         menu_item_Usuario.setText("Usuario");
         menu_item_Usuario.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +187,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 menu_item_UsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(menu_item_Usuario);
+        menu_mentenimiento.add(menu_item_Usuario);
 
         menu_item_Turno.setText("Turno");
         menu_item_Turno.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +195,8 @@ public class Menu_Principal extends javax.swing.JFrame {
                 menu_item_TurnoActionPerformed(evt);
             }
         });
-        jMenu1.add(menu_item_Turno);
+        menu_mentenimiento.add(menu_item_Turno);
+        menu_mentenimiento.add(jSeparator2);
 
         menu_item_Marca.setText("Laboratorio");
         menu_item_Marca.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +204,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 menu_item_MarcaActionPerformed(evt);
             }
         });
-        jMenu1.add(menu_item_Marca);
+        menu_mentenimiento.add(menu_item_Marca);
 
         menu_item_categoria.setText("Categoria");
         menu_item_categoria.addActionListener(new java.awt.event.ActionListener() {
@@ -198,25 +212,62 @@ public class Menu_Principal extends javax.swing.JFrame {
                 menu_item_categoriaActionPerformed(evt);
             }
         });
-        jMenu1.add(menu_item_categoria);
+        menu_mentenimiento.add(menu_item_categoria);
 
-        jMenuBar1.add(jMenu1);
+        menu_item_medida.setText("Medida");
+        menu_item_medida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_medidaActionPerformed(evt);
+            }
+        });
+        menu_mentenimiento.add(menu_item_medida);
 
-        jMenu2.setText("Compras");
-        jMenu2.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jMenuBar1.add(jMenu2);
+        menu_item_producto.setText("Producto");
+        menu_item_producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_productoActionPerformed(evt);
+            }
+        });
+        menu_mentenimiento.add(menu_item_producto);
 
-        menu_deuda.setText("Inventario");
-        menu_deuda.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jMenuBar1.add(menu_deuda);
+        menu_item_Composicion.setText("Composicion");
+        menu_item_Composicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_ComposicionActionPerformed(evt);
+            }
+        });
+        menu_mentenimiento.add(menu_item_Composicion);
+        menu_mentenimiento.add(jSeparator3);
 
-        jMenu3.setText("Ventas");
-        jMenu3.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jMenuBar1.add(jMenu3);
+        menu_item_proveedor.setText("Proveedor");
+        menu_item_proveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_proveedorActionPerformed(evt);
+            }
+        });
+        menu_mentenimiento.add(menu_item_proveedor);
 
-        menu_salir.setText("Caja");
-        menu_salir.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
-        jMenuBar1.add(menu_salir);
+        jMenuBar1.add(menu_mentenimiento);
+
+        menu_compras.setText("Compras");
+        menu_compras.setEnabled(false);
+        menu_compras.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jMenuBar1.add(menu_compras);
+
+        menu_inventario.setText("Inventario");
+        menu_inventario.setEnabled(false);
+        menu_inventario.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jMenuBar1.add(menu_inventario);
+
+        menu_ventas.setText("Ventas");
+        menu_ventas.setEnabled(false);
+        menu_ventas.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jMenuBar1.add(menu_ventas);
+
+        menu_caja.setText("Caja");
+        menu_caja.setEnabled(false);
+        menu_caja.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jMenuBar1.add(menu_caja);
 
         setJMenuBar(jMenuBar1);
 
@@ -271,11 +322,12 @@ public class Menu_Principal extends javax.swing.JFrame {
         frame.show();
     }//GEN-LAST:event_menu_item_TurnoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+
+
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void menu_item_MarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_MarcaActionPerformed
         // TODO add your handling code here:
@@ -296,6 +348,47 @@ public class Menu_Principal extends javax.swing.JFrame {
         frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
         frame.show();
     }//GEN-LAST:event_menu_item_categoriaActionPerformed
+
+    private void menu_item_medidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_medidaActionPerformed
+        // TODO add your handling code here:
+        Medida_IU frame = new Medida_IU();
+        escritorio.add(frame);
+        Dimension a = escritorio.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_menu_item_medidaActionPerformed
+
+    private void menu_item_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_productoActionPerformed
+        // TODO add your handling code here:
+        Producto_IU frame = new Producto_IU();
+        escritorio.add(frame);
+        Dimension a = escritorio.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_menu_item_productoActionPerformed
+
+    private void menu_item_ComposicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_ComposicionActionPerformed
+        // TODO add your handling code here:
+         Composicion_IU frame = new Composicion_IU();
+        escritorio.add(frame);
+        Dimension a = escritorio.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+        
+    }//GEN-LAST:event_menu_item_ComposicionActionPerformed
+
+    private void menu_item_proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_proveedorActionPerformed
+        // TODO add your handling code here:
+        Proveedor_IU frame = new Proveedor_IU();
+        escritorio.add(frame);
+        Dimension a = escritorio.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_menu_item_proveedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,31 +429,37 @@ public class Menu_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCaja;
-    private javax.swing.JButton btnCompras;
-    private javax.swing.JButton btnEgresos;
-    private javax.swing.JButton btnIngresos;
-    public javax.swing.JButton btnProducto;
-    private javax.swing.JButton btnVentas;
+    public static javax.swing.JButton btnCaja;
+    public static javax.swing.JButton btnCerrar;
+    public static javax.swing.JButton btnCompras;
+    public static javax.swing.JButton btnEgresos;
+    public static javax.swing.JButton btnIngresos;
+    public static javax.swing.JButton btnProducto;
+    public static javax.swing.JButton btnVentas;
     public static javax.swing.JDesktopPane escritorio;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JToolBar.Separator jSeparator7;
     private javax.swing.JToolBar.Separator jSeparator8;
     private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
-    public javax.swing.JMenu menu_deuda;
+    public static javax.swing.JMenu menu_caja;
+    public static javax.swing.JMenu menu_compras;
+    public static javax.swing.JMenu menu_inventario;
+    private javax.swing.JMenuItem menu_item_Composicion;
     private javax.swing.JMenuItem menu_item_Marca;
     private javax.swing.JMenuItem menu_item_TipoUsuario;
     private javax.swing.JMenuItem menu_item_Turno;
     private javax.swing.JMenuItem menu_item_Usuario;
     private javax.swing.JMenuItem menu_item_categoria;
-    public javax.swing.JMenu menu_salir;
+    private javax.swing.JMenuItem menu_item_medida;
+    private javax.swing.JMenuItem menu_item_producto;
+    private javax.swing.JMenuItem menu_item_proveedor;
+    public static javax.swing.JMenu menu_mentenimiento;
+    public static javax.swing.JMenu menu_ventas;
     // End of variables declaration//GEN-END:variables
 }

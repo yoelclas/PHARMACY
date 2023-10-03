@@ -6,7 +6,9 @@
 package CapaPresentacion;
 
 import CapaDatos.Categoria;
+import CapaDatos.Marca;
 import CapaNegocio.CategoriaBD;
+import CapaNegocio.MarcaBD;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -29,23 +31,26 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
 
     private void reporte_categoria() {
         setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-
         try {
             limpiar_tabla_formulario();
+            DefaultTableModel tabla_temporal_categoria = (DefaultTableModel) this.tabla_reporte_categoria.getModel();
 
-            DefaultTableModel tabla_temporal = (DefaultTableModel) this.tabla_reporte_categoria.getModel();
             CategoriaBD oCategoriaBD = new CategoriaBD();
 
             List<Categoria> lista_categorias = oCategoriaBD.reportarCategoria();
 
             for (int i = 0; i < lista_categorias.size(); i++) {
                 int idcategoria = lista_categorias.get(i).getIdcategoria();
-                String maNombre = lista_categorias.get(i).getCaNombre();
-                Object[] data = {idcategoria, maNombre};
-                tabla_temporal.addRow(data);
+                String catNombre = lista_categorias.get(i).getCaNombre();
+                Object[] data = {idcategoria, catNombre};
+                tabla_temporal_categoria.addRow(data);
 
             }
-            tabla_reporte_categoria.setModel(tabla_temporal);
+            int cantLista = tabla_temporal_categoria.getRowCount();
+            txtCantidad.setText("" + cantLista);
+
+            tabla_reporte_categoria.setModel(tabla_temporal_categoria);
+
             setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         } catch (Exception e) {
@@ -57,6 +62,16 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
     private void limpiar_tabla_formulario() {
         DefaultTableModel tabla_temporal_categorias = (DefaultTableModel) tabla_reporte_categoria.getModel();
         tabla_temporal_categorias.setRowCount(0);
+//        tabla_reporte_categoria.setModel(new DefaultTableModel());
+
+    }
+
+    public void limpiar() {
+        txtID.setText("");
+        txtNombre.setText("");
+        txtNombre.requestFocus();
+        
+        reporte_categoria();
 
     }
 
@@ -105,21 +120,31 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
 
         tabla_reporte_categoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "NOMBRE"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabla_reporte_categoria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tabla_reporte_categoriaMousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(tabla_reporte_categoria);
+        if (tabla_reporte_categoria.getColumnModel().getColumnCount() > 0) {
+            tabla_reporte_categoria.getColumnModel().getColumn(0).setMinWidth(100);
+            tabla_reporte_categoria.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tabla_reporte_categoria.getColumnModel().getColumn(0).setMaxWidth(100);
+        }
 
         jLabel4.setText("Cantidad");
 
@@ -184,6 +209,14 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Categoria");
 
+        txtBuscarCategoria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscarCategoriaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscarCategoriaFocusLost(evt);
+            }
+        });
         txtBuscarCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBuscarCategoriaKeyPressed(evt);
@@ -311,8 +344,10 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
                 boolean rpta = oCategoriaBD.registrarCategotia(oCategoria);
                 if (rpta) {
                     exito("se registro correctamente");
-                    reporte_categoria();
                     limpiar_tabla_formulario();
+                    reporte_categoria();
+                    txtNombre.setText("");
+                    txtNombre.requestFocus();
 
                 } else {
                     error("Tienes problemas al registrar");
@@ -348,7 +383,10 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
 
                     if (rpta) {
                         JOptionPane.showMessageDialog(this, "SE MODIFICAR CORRECTAMENTE");
+
+                        limpiar();
                         reporte_categoria();
+                        txtNombre.requestFocus();
 
                     } else {
                         JOptionPane.showMessageDialog(this, "ERROR AL REGISTRAR MARCA");
@@ -384,9 +422,9 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
                     boolean rpta = oCategoriaBD.eliminarCategoria(idmarca);
                     if (rpta) {
                         exito("Se elimino la marca correctamente");
-                        reporte_categoria();
-                        //limpiamos las cajas
                         limpiar_tabla_formulario();
+                        reporte_categoria();
+                        limpiar();
 
                     } else {
                         error("Tienes problemas para eliminar");
@@ -434,27 +472,38 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
-        limpiar_tabla_formulario();
+
+       
+        txtNombre.setText("");
+        txtID.setText("");
+        txtNombre.requestFocus();
         reporte_categoria();
+   
+
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void txtBuscarCategoriaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarCategoriaKeyPressed
         // TODO add your handling code here:
 
         try {
-            setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+            limpiar_tabla_formulario();
 
-            DefaultTableModel tabla_temporal;
-            String valor = txtBuscarCategoria.getText();
-
+            DefaultTableModel tabla_temporal = (DefaultTableModel) this.tabla_reporte_categoria.getModel();
             CategoriaBD oCategoriaBD = new CategoriaBD();
-            tabla_temporal = oCategoriaBD.buscarCategoria(valor);
 
+            String valor = txtBuscarCategoria.getText().trim();
+
+            List<Categoria> listaCategoria = oCategoriaBD.buscarCategoria(valor);
+
+            for (int i = 0; i < listaCategoria.size(); i++) {
+                int idcategoria = listaCategoria.get(i).getIdcategoria();
+                String maNombre = listaCategoria.get(i).getCaNombre();
+
+                Object[] data = {idcategoria, maNombre};
+                tabla_temporal.addRow(data);
+
+            }
             tabla_reporte_categoria.setModel(tabla_temporal);
-
-            int cantLista = tabla_temporal.getRowCount();
-            txtCantidad.setText("" + cantLista);
-
             setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         } catch (Exception ex) {
@@ -468,6 +517,16 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void txtBuscarCategoriaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarCategoriaFocusGained
+        // TODO add your handling code here:
+        txtBuscarCategoria.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtBuscarCategoriaFocusGained
+
+    private void txtBuscarCategoriaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarCategoriaFocusLost
+        // TODO add your handling code here:
+        txtBuscarCategoria.setBackground(Color.white);
+    }//GEN-LAST:event_txtBuscarCategoriaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
